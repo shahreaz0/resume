@@ -416,7 +416,8 @@ navLink.forEach((n)=>n.addEventListener('click', linkAction)
 //window.addEventListener('scroll', scrollActive);
 /*==================== SHOW SCROLL TOP ====================*/ function scrollTop() {
     const scrollTop1 = document.getElementById('scroll-top');
-    // When the scroll is higher than 560 viewport height, add the show-scroll class to the a tag with the scroll-top class
+    // When the scroll is higher than 560 viewport height, add the show-scroll class to the a 
+    //tag with the scroll-top class
     if (this.scrollY >= 200) scrollTop1.classList.add('show-scroll');
     else scrollTop1.classList.remove('show-scroll');
 }
@@ -489,11 +490,36 @@ resumeButton.addEventListener('click', ()=>{
     generateResume();
     // 3. The .scale-cv class is removed from the body after 5 seconds to return to normal size.
     setTimeout(removeScale, 5000);
-});
+}); /*==================== COPY TO CLIPBOARD ====================*/  // function myFunction(id, tooltipId) {
+ //     var r = document.createRange();
+ //     r.selectNode(document.getElementById(id));
+ //     window.getSelection().removeAllRanges();
+ //     window.getSelection().addRange(r);
+ //     document.execCommand('copy');
+ //     window.getSelection().removeAllRanges();
+ //     var tooltip = document.getElementById(tooltipId);
+ //     tooltip.innerHTML = "Copied";
+ // }
+ // function outFunc(tooltipId) {
+ //     var tooltip = document.getElementById(tooltipId);
+ //     tooltip.innerHTML = "Copy to clipboard";
+ // }
+ // // address copy
+ // const addressButton = document.querySelector("#text-address");
+ // addressButton.addEventListener('click', () => myFunction("text-address", "tooltip-address"));
+ // addressButton.addEventListener('mouseout', () => outFunc("tooltip-address"));
+ // /// email copy
+ // const emailButton = document.querySelector("#text-email");
+ // emailButton.addEventListener('click', () => myFunction("text-email", "tooltip-email"));
+ // emailButton.addEventListener('mouseout', () => outFunc("tooltip-email"));
+ // // phone copy
+ // const phoneButton = document.querySelector("#text-phone");
+ // phoneButton.addEventListener('click', () => myFunction("text-phone", "tooltip-phone"));
+ // phoneButton.addEventListener('mouseout', () => outFunc("tooltip-phone"));
 
 },{"html2pdf.js":"79njg","@parcel/transformer-js/src/esmodule-helpers.js":"367CR"}],"79njg":[function(require,module,exports) {
-var global = arguments[3];
 var process = require("process");
+var global = arguments[3];
 (function(global1, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('jspdf'), require('html2canvas')) : typeof define === 'function' && define.amd ? define([
         'jspdf',
@@ -2590,8 +2616,8 @@ process.umask = function() {
 };
 
 },{}],"6Bm4G":[function(require,module,exports) {
-var process = require("process");
 var global = arguments[3];
+var process = require("process");
 (function(t, e) {
     "object" == typeof exports && "undefined" != typeof module ? module.exports = e() : "function" == typeof define && define.amd ? define(e) : t.jsPDF = e();
 })(this, function() {
