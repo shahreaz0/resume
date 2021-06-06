@@ -1,6 +1,31 @@
-/*==================== SHOW MENU ====================*/
-//const html2pdf = require('html2pdf.js');
+/*==================== IMPORTS ====================*/
 import html2pdf from 'html2pdf.js';
+import tippy from 'tippy.js';
+import 'tippy.js/dist/tippy.css';
+
+
+
+// tooltip
+tippy(".tooltip", {
+    content: "Copy to clipboard",
+})
+
+tippy('.tooltip', {
+    content: 'Copied!', 
+    trigger: 'click', 
+    hideOnClick: false, // if you want
+    onShow(instance) {
+        setTimeout(() => {
+            instance.hide();
+        }, 1000);
+  }
+});
+
+
+
+
+
+/*==================== SHOW MENU ====================*/
 
 function showMenu(toggleId, navId) {
     const toggle = document.getElementById(toggleId)
@@ -124,30 +149,24 @@ resumeButton.addEventListener('click', () => {
 
 /*==================== COPY TO CLIPBOARD ====================*/
 
-// function myFunction(id, tooltipId) {
-//     var r = document.createRange();
-//     r.selectNode(document.getElementById(id));
-//     window.getSelection().removeAllRanges();
-//     window.getSelection().addRange(r);
-//     document.execCommand('copy');
-//     window.getSelection().removeAllRanges();
-//     var tooltip = document.getElementById(tooltipId);
-//     tooltip.innerHTML = "Copied";
-// }
+function myFunction(id) {
+    var r = document.createRange();
+    r.selectNode(document.getElementById(id));
+    window.getSelection().removeAllRanges();
+    window.getSelection().addRange(r);
+    document.execCommand('copy');
+    window.getSelection().removeAllRanges();
+}
 
-// function outFunc(tooltipId) {
-//     var tooltip = document.getElementById(tooltipId);
-//     tooltip.innerHTML = "Copy to clipboard";
-// }
-// // address copy
-// const addressButton = document.querySelector("#text-address");
-// addressButton.addEventListener('click', () => myFunction("text-address", "tooltip-address"));
-// addressButton.addEventListener('mouseout', () => outFunc("tooltip-address"));
-// /// email copy
-// const emailButton = document.querySelector("#text-email");
-// emailButton.addEventListener('click', () => myFunction("text-email", "tooltip-email"));
-// emailButton.addEventListener('mouseout', () => outFunc("tooltip-email"));
+
+// address copy
+const addressButton = document.querySelector("#tooltip-address");
+addressButton.addEventListener('click', () => myFunction("tooltip-address"));
+
+// email copy
+const emailButton = document.querySelector("#tooltip-email");
+emailButton.addEventListener('click', () => myFunction("tooltip-email"));
+
 // // phone copy
-// const phoneButton = document.querySelector("#text-phone");
-// phoneButton.addEventListener('click', () => myFunction("text-phone", "tooltip-phone"));
-// phoneButton.addEventListener('mouseout', () => outFunc("tooltip-phone"));
+const phoneButton = document.querySelector("#tooltip-phone");
+phoneButton.addEventListener('click', () => myFunction("tooltip-phone"));
