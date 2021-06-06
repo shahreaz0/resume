@@ -4,29 +4,7 @@ import tippy from 'tippy.js';
 import 'tippy.js/dist/tippy.css';
 
 
-
-// tooltip
-tippy(".tooltip", {
-    content: "Copy to clipboard",
-})
-
-tippy('.tooltip', {
-    content: 'Copied!', 
-    trigger: 'click', 
-    hideOnClick: false, // if you want
-    onShow(instance) {
-        setTimeout(() => {
-            instance.hide();
-        }, 1000);
-  }
-});
-
-
-
-
-
 /*==================== SHOW MENU ====================*/
-
 function showMenu(toggleId, navId) {
     const toggle = document.getElementById(toggleId)
         , nav = document.getElementById(navId);
@@ -39,6 +17,8 @@ function showMenu(toggleId, navId) {
     }
 }
 showMenu('nav-toggle', 'nav-menu')
+
+
 /*==================== REMOVE MENU MOBILE ====================*/
 const navLink = document.querySelectorAll('.nav__link');
 
@@ -48,6 +28,8 @@ function linkAction() {
     navMenu.classList.remove('show-menu');
 }
 navLink.forEach(n => n.addEventListener('click', linkAction));
+
+
 /*==================== SCROLL SECTIONS ACTIVE LINK ====================*/
 function scrollActive() {
     const sections = document.querySelectorAll('section[id]');
@@ -64,6 +46,8 @@ function scrollActive() {
     })
 }
 //window.addEventListener('scroll', scrollActive);
+
+
 /*==================== SHOW SCROLL TOP ====================*/
 function scrollTop() {
     const scrollTop = document.getElementById('scroll-top');
@@ -75,6 +59,8 @@ function scrollTop() {
 window.addEventListener("load", () => {
     addEventListener('scroll', scrollTop);
 });
+
+
 /*==================== DARK LIGHT THEME ====================*/
 const themeButton = document.getElementById('theme-button');
 const darkTheme = 'dark-theme';
@@ -100,20 +86,26 @@ themeButton.addEventListener('click', () => {
     localStorage.setItem('selected-theme', getCurrentTheme())
     localStorage.setItem('selected-icon', getCurrentIcon())
 })
+
+
 /*==================== REDUCE THE SIZE AND PRINT ON AN A4 SHEET ====================*/
 function scaleCv() {
     document.body.classList.add('scale-cv');
 }
+
+
 /*==================== REMOVE THE SIZE WHEN THE CV IS DOWNLOADED ====================*/
 function removeScale() {
     document.body.classList.remove('scale-cv');
 }
+
+
 /*==================== GENERATE PDF ====================*/
 // PDF generated area
 let areaCv = document.getElementById('area-cv');
 const resumeButton = document.getElementById('resume-button');
 // Html2pdf options
-var opt = {
+const opt = {
     margin: 0
     , filename: 'Shahreaz Bin Alam.pdf'
     , image: {
@@ -137,7 +129,7 @@ function generateResume() {
 }
 // When the button is clicked, it executes the three functions
 resumeButton.addEventListener('click', () => {
-    // 1. The class .scale-cv is added to the body, where it reduces the size of the elements
+    // 1. The class .scale-cv is added to the body
     scaleCv();
     // 2. The PDF is generated
     generateResume();
@@ -146,11 +138,25 @@ resumeButton.addEventListener('click', () => {
 });
 
 
-
 /*==================== COPY TO CLIPBOARD ====================*/
 
-function myFunction(id) {
-    var r = document.createRange();
+tippy(".tooltip", {
+    content: "Copy to clipboard",
+})
+
+tippy('.tooltip', {
+    content: 'Copied!', 
+    trigger: 'click', 
+    hideOnClick: false, // if you want
+    onShow(instance) {
+        setTimeout(() => {
+            instance.hide();
+        }, 1000);
+  }
+});
+
+function copyFunc(id) {
+    const r = document.createRange();
     r.selectNode(document.getElementById(id));
     window.getSelection().removeAllRanges();
     window.getSelection().addRange(r);
@@ -158,15 +164,14 @@ function myFunction(id) {
     window.getSelection().removeAllRanges();
 }
 
+function addEventCopy(id) {
+    const addressButton = document.querySelector(`#${id}`);
+    addressButton.addEventListener('click', () => copyFunc(id));
+}
 
 // address copy
-const addressButton = document.querySelector("#tooltip-address");
-addressButton.addEventListener('click', () => myFunction("tooltip-address"));
-
+addEventCopy("tooltip-address");
 // email copy
-const emailButton = document.querySelector("#tooltip-email");
-emailButton.addEventListener('click', () => myFunction("tooltip-email"));
-
-// // phone copy
-const phoneButton = document.querySelector("#tooltip-phone");
-phoneButton.addEventListener('click', () => myFunction("tooltip-phone"));
+addEventCopy("tooltip-email");
+// phone copy
+addEventCopy("tooltip-phone");

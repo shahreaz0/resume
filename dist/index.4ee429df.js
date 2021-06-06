@@ -387,20 +387,6 @@ var _html2PdfJsDefault = parcelHelpers.interopDefault(_html2PdfJs);
 var _tippyJs = require("tippy.js");
 var _tippyJsDefault = parcelHelpers.interopDefault(_tippyJs);
 var _tippyCss = require("tippy.js/dist/tippy.css");
-// tooltip
-_tippyJsDefault.default(".tooltip", {
-    content: "Copy to clipboard"
-});
-_tippyJsDefault.default('.tooltip', {
-    content: 'Copied!',
-    trigger: 'click',
-    hideOnClick: false,
-    onShow (instance) {
-        setTimeout(()=>{
-            instance.hide();
-        }, 1000);
-    }
-});
 /*==================== SHOW MENU ====================*/ function showMenu(toggleId, navId) {
     const toggle = document.getElementById(toggleId), nav = document.getElementById(navId);
     // Validate that variables exist
@@ -476,7 +462,7 @@ themeButton.addEventListener('click', ()=>{
 let areaCv = document.getElementById('area-cv');
 const resumeButton = document.getElementById('resume-button');
 // Html2pdf options
-var opt = {
+const opt = {
     margin: 0,
     filename: 'Shahreaz Bin Alam.pdf',
     image: {
@@ -500,35 +486,47 @@ function generateResume() {
 }
 // When the button is clicked, it executes the three functions
 resumeButton.addEventListener('click', ()=>{
-    // 1. The class .scale-cv is added to the body, where it reduces the size of the elements
+    // 1. The class .scale-cv is added to the body
     scaleCv();
     // 2. The PDF is generated
     generateResume();
     // 3. The .scale-cv class is removed from the body after 5 seconds to return to normal size.
     setTimeout(removeScale, 5000);
 });
-/*==================== COPY TO CLIPBOARD ====================*/ function myFunction(id) {
-    var r = document.createRange();
+/*==================== COPY TO CLIPBOARD ====================*/ _tippyJsDefault.default(".tooltip", {
+    content: "Copy to clipboard"
+});
+_tippyJsDefault.default('.tooltip', {
+    content: 'Copied!',
+    trigger: 'click',
+    hideOnClick: false,
+    onShow (instance) {
+        setTimeout(()=>{
+            instance.hide();
+        }, 1000);
+    }
+});
+function copyFunc(id) {
+    const r = document.createRange();
     r.selectNode(document.getElementById(id));
     window.getSelection().removeAllRanges();
     window.getSelection().addRange(r);
     document.execCommand('copy');
     window.getSelection().removeAllRanges();
 }
+function addEventCopy(id) {
+    const addressButton = document.querySelector(`#${id}`);
+    addressButton.addEventListener('click', ()=>copyFunc(id)
+    );
+}
 // address copy
-const addressButton = document.querySelector("#tooltip-address");
-addressButton.addEventListener('click', ()=>myFunction("tooltip-address")
-);
+addEventCopy("tooltip-address");
 // email copy
-const emailButton = document.querySelector("#tooltip-email");
-emailButton.addEventListener('click', ()=>myFunction("tooltip-email")
-);
-// // phone copy
-const phoneButton = document.querySelector("#tooltip-phone");
-phoneButton.addEventListener('click', ()=>myFunction("tooltip-phone")
-);
+addEventCopy("tooltip-email");
+// phone copy
+addEventCopy("tooltip-phone");
 
-},{"html2pdf.js":"79njg","tippy.js":"3f77O","@parcel/transformer-js/src/esmodule-helpers.js":"367CR","tippy.js/dist/tippy.css":"Fixx4"}],"79njg":[function(require,module,exports) {
+},{"html2pdf.js":"79njg","tippy.js":"3f77O","tippy.js/dist/tippy.css":"Fixx4","@parcel/transformer-js/src/esmodule-helpers.js":"367CR"}],"79njg":[function(require,module,exports) {
 var process = require("process");
 var global = arguments[3];
 (function(global1, factory) {
@@ -2627,8 +2625,8 @@ process.umask = function() {
 };
 
 },{}],"6Bm4G":[function(require,module,exports) {
-var process = require("process");
 var global = arguments[3];
+var process = require("process");
 (function(t, e) {
     "object" == typeof exports && "undefined" != typeof module ? module.exports = e() : "function" == typeof define && define.amd ? define(e) : t.jsPDF = e();
 })(this, function() {
@@ -26561,7 +26559,7 @@ exports.popperGenerator = popperGenerator;
 exports.popperOffsets = popperOffsets$1;
 exports.preventOverflow = preventOverflow$1;
 
-},{}],"367CR":[function(require,module,exports) {
+},{}],"Fixx4":[function() {},{}],"367CR":[function(require,module,exports) {
 exports.interopDefault = function(a) {
     return a && a.__esModule ? a : {
         default: a
@@ -26593,6 +26591,6 @@ exports.export = function(dest, destName, get) {
     });
 };
 
-},{}],"Fixx4":[function() {},{}]},["1XQsC","SXDIM"], "SXDIM", "parcelRequire513c")
+},{}]},["1XQsC","SXDIM"], "SXDIM", "parcelRequire513c")
 
 //# sourceMappingURL=index.4ee429df.js.map
