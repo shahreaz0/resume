@@ -3,11 +3,10 @@ import html2pdf from 'html2pdf.js';
 import tippy from 'tippy.js';
 import 'tippy.js/dist/tippy.css';
 
-
 /*==================== SHOW MENU ====================*/
 function showMenu(toggleId, navId) {
-    const toggle = document.getElementById(toggleId)
-        , nav = document.getElementById(navId);
+    const toggle = document.getElementById(toggleId);
+    const nav = document.getElementById(navId);
     // Validate that variables exist
     if (toggle && nav) {
         toggle.addEventListener('click', () => {
@@ -16,7 +15,7 @@ function showMenu(toggleId, navId) {
         })
     }
 }
-showMenu('nav-toggle', 'nav-menu')
+showMenu('nav-toggle', 'nav-menu');
 
 
 /*==================== REMOVE MENU MOBILE ====================*/
@@ -69,22 +68,22 @@ const iconTheme = 'bx-sun';
 const selectedTheme = localStorage.getItem('selected-theme');
 const selectedIcon = localStorage.getItem('selected-icon');
 // We obtain the current theme that the interface has by validating the dark-theme class
-const getCurrentTheme = () => document.body.classList.contains(darkTheme) ? 'dark' : 'light'
-const getCurrentIcon = () => themeButton.classList.contains(iconTheme) ? 'bx-moon' : 'bx-sun'
+const getCurrentTheme = () => document.body.classList.contains(darkTheme) ? 'dark' : 'light';
+const getCurrentIcon = () => themeButton.classList.contains(iconTheme) ? 'bx-moon' : 'bx-sun';
 // We validate if the user previously chose a topic
 if (selectedTheme) {
     // If the validation is fulfilled, we ask what the issue was to know if we activated or deactivated the dark
-    document.body.classList[selectedTheme === 'dark' ? 'add' : 'remove'](darkTheme)
-    themeButton.classList[selectedIcon === 'bx-moon' ? 'add' : 'remove'](iconTheme)
+    document.body.classList[selectedTheme === 'dark' ? 'add' : 'remove'](darkTheme);
+    themeButton.classList[selectedIcon === 'bx-moon' ? 'add' : 'remove'](iconTheme);
 }
 // Activate / deactivate the theme manually with the button
 themeButton.addEventListener('click', () => {
     // Add or remove the dark / icon theme
-    document.body.classList.toggle(darkTheme)
-    themeButton.classList.toggle(iconTheme)
+    document.body.classList.toggle(darkTheme);
+    themeButton.classList.toggle(iconTheme);
     // We save the theme and the current icon that the user chose
-    localStorage.setItem('selected-theme', getCurrentTheme())
-    localStorage.setItem('selected-icon', getCurrentIcon())
+    localStorage.setItem('selected-theme', getCurrentTheme());
+    localStorage.setItem('selected-icon', getCurrentIcon());
 })
 
 
@@ -142,8 +141,8 @@ resumeButton.addEventListener('click', () => {
 
 tippy(".tooltip", {
     content: "Copy to clipboard",
-})
-
+});
+    
 tippy('.tooltip', {
     content: 'Copied!', 
     trigger: 'click', 
@@ -165,8 +164,8 @@ function copyFunc(id) {
 }
 
 function addEventCopy(id) {
-    const addressButton = document.querySelector(`#${id}`);
-    addressButton.addEventListener('click', () => copyFunc(id));
+    const button = document.querySelector(`#${id}`);
+    button.addEventListener('click', () => copyFunc(id));
 }
 
 // address copy

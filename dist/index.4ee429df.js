@@ -388,7 +388,8 @@ var _tippyJs = require("tippy.js");
 var _tippyJsDefault = parcelHelpers.interopDefault(_tippyJs);
 var _tippyCss = require("tippy.js/dist/tippy.css");
 /*==================== SHOW MENU ====================*/ function showMenu(toggleId, navId) {
-    const toggle = document.getElementById(toggleId), nav = document.getElementById(navId);
+    const toggle = document.getElementById(toggleId);
+    const nav = document.getElementById(navId);
     // Validate that variables exist
     if (toggle && nav) toggle.addEventListener('click', ()=>{
         // We add the show-menu class to the div tag with the nav__menu class
@@ -515,8 +516,8 @@ function copyFunc(id) {
     window.getSelection().removeAllRanges();
 }
 function addEventCopy(id) {
-    const addressButton = document.querySelector(`#${id}`);
-    addressButton.addEventListener('click', ()=>copyFunc(id)
+    const button = document.querySelector(`#${id}`);
+    button.addEventListener('click', ()=>copyFunc(id)
     );
 }
 // address copy
@@ -527,8 +528,8 @@ addEventCopy("tooltip-email");
 addEventCopy("tooltip-phone");
 
 },{"html2pdf.js":"79njg","tippy.js":"3f77O","tippy.js/dist/tippy.css":"Fixx4","@parcel/transformer-js/src/esmodule-helpers.js":"367CR"}],"79njg":[function(require,module,exports) {
-var process = require("process");
 var global = arguments[3];
+var process = require("process");
 (function(global1, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('jspdf'), require('html2canvas')) : typeof define === 'function' && define.amd ? define([
         'jspdf',
