@@ -4,8 +4,8 @@
   "description": "",
   "scripts": {
     "dev": "parcel serve ./src/index.html -p 8080",
-    "build": "parcel build ./src/index.html --dist-dir ./prod",
-    "deploy": "gh-pages -d prod"
+    "build": "rm -rf ./build && parcel build ./src/index.html --dist-dir ./build --public-url ./",
+    "deploy": "gh-pages -d build"
   },
   "browserslist": [
     "> 0.2%",
