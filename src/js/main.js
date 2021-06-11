@@ -103,29 +103,22 @@ function removeScale() {
 // PDF generated area
 let areaCv = document.getElementById('area-cv');
 const resumeButton = document.getElementById('resume-button');
+
 // Html2pdf options
 const opt = {
-    margin: 0
-    , filename: 'Shahreaz Bin Alam.pdf'
-    , image: {
-        type: 'jpeg'
-        , quality: 0.98
-    }
-    , html2canvas: {
-        scale: 4
-    }
-    , jsPDF: {
-        format: 'a4'
-        , orientation: 'portrait'
-    }
-    , pagebreak: {
-        after: '.html2pdf'
-    }
+    right: 5, 
+    filename: 'Shahreaz Bin Alam.pdf', 
+    image: { type: 'jpeg', quality: 0.98 }, 
+    html2canvas: {scale: 4 }, 
+    jsPDF: { format: 'a4', orientation: 'portrait'}, 
+    pagebreak: { after: '.html2pdf' }
 };
+
 // Function to call areaCv and Html2Pdf options 
 function generateResume() {
     html2pdf(areaCv, opt);
 }
+
 // When the button is clicked, it executes the three functions
 resumeButton.addEventListener('click', () => {
     // 1. The class .scale-cv is added to the body
@@ -138,7 +131,6 @@ resumeButton.addEventListener('click', () => {
 
 
 /*==================== COPY TO CLIPBOARD ====================*/
-
 tippy(".tooltip", {
     content: "Copy to clipboard",
 });
@@ -164,7 +156,7 @@ function copyFunc(id) {
 }
 
 function addEventCopy(id) {
-    const button = document.querySelector(`#${id}`);
+    const button = document.getElementById(id);
     button.addEventListener('click', () => copyFunc(id));
 }
 

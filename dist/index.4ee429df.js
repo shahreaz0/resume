@@ -464,7 +464,7 @@ let areaCv = document.getElementById('area-cv');
 const resumeButton = document.getElementById('resume-button');
 // Html2pdf options
 const opt = {
-    margin: 0,
+    right: 5,
     filename: 'Shahreaz Bin Alam.pdf',
     image: {
         type: 'jpeg',
@@ -516,7 +516,7 @@ function copyFunc(id) {
     window.getSelection().removeAllRanges();
 }
 function addEventCopy(id) {
-    const button = document.querySelector(`#${id}`);
+    const button = document.getElementById(id);
     button.addEventListener('click', ()=>copyFunc(id)
     );
 }
