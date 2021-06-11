@@ -199,6 +199,11 @@ img {
     height: auto;
 }
 
+em {
+    font-size: var(--smaller-font-size);
+    font-weight: bold;
+}
+
 /*========== CLASS CSS ==========*/
 
 .section {

@@ -528,8 +528,8 @@ addEventCopy("tooltip-email");
 addEventCopy("tooltip-phone");
 
 },{"html2pdf.js":"79njg","tippy.js":"3f77O","tippy.js/dist/tippy.css":"Fixx4","@parcel/transformer-js/src/esmodule-helpers.js":"367CR"}],"79njg":[function(require,module,exports) {
-var global = arguments[3];
 var process = require("process");
+var global = arguments[3];
 (function(global1, factory) {
     typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory(require('jspdf'), require('html2canvas')) : typeof define === 'function' && define.amd ? define([
         'jspdf',
@@ -2626,8 +2626,8 @@ process.umask = function() {
 };
 
 },{}],"6Bm4G":[function(require,module,exports) {
-var global = arguments[3];
 var process = require("process");
+var global = arguments[3];
 (function(t, e) {
     "object" == typeof exports && "undefined" != typeof module ? module.exports = e() : "function" == typeof define && define.amd ? define(e) : t.jsPDF = e();
 })(this, function() {
